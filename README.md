@@ -16,11 +16,11 @@ An expanded description of this model implimentation can be found on its project
 www.michaelhasey.com/controlling_gans
 ```
 
-## Uncontrollable to Controlled
+## Uncontrolled to Controlled
 
-The left animation below illustrates how GANS, when left uncontrolled, can generate numerous variations of imagery.  However, in this state, composition, geometry, environment, etc. are left to chance.  The image to the right illustrates how GAN image generation can be controlled when engaging with latent space.  Here, the height of the left tower is being targeted and carefully controlled.
+The left animation below illustrates how GANS, when left uncontrolled, can generate a wide range of imagery in a seemingly random manner.  In this state, composition, geometry, environment, etc. are left to chance.  The image to the right illustrates how GANs can be controlled when engaging with latent space.  Here, the height of the left tower is being targeted and carefully altered by carefully targeting and manipulating particular latent space vectors.
 
-![](images/no_control2.gif)
+![](images/no_control3.gif)
 ![](images/left_tower2.gif)
 
 ## Table of Contents
