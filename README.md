@@ -9,7 +9,6 @@ This project aims to shed light on some of these algorithms and reveal how image
 ![](images/splash.png)
 
 ![](images/no_control2.gif)
-
 ![](images/left_tower.gif)
 
 
