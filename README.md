@@ -1,15 +1,12 @@
 # Controlling Image Synthesis
 
+![](images/splash.png)
+
 ## About 
 
 There are many examples of image synthesis applications in art, design, and architecture.  Algorithms like GANs have allowed designers to automatically generate new imagery, from Renaissance paintings, furniture designs, or photographs of particular architectural styles.   However, the overwhelming majority of these projects fail to provide any level of synthesis control, thus reinforcing the stigma of algorithms being untamed and unknown black-box entities.
 
 This project aims to shed light on some of these algorithms and reveal how image generation can be controlled through direct interaction with latent vector space.  Here, various models such as VanillaGAN, CycleGAN, and StyleGAN2 are used to explore different control techniques. For training and testing data, a small custom dataset of 250 architectural images was used.
-
-![](images/splash.png)
-
-![](images/no_control2.gif)
-![](images/left_tower.gif)
 
 
 ## Project Page
@@ -17,8 +14,15 @@ This project aims to shed light on some of these algorithms and reveal how image
 An expanded description of this model implimentation can be found on its project page here:
 
 ```
-https://www.michaelhasey.com/gradient-domain-fusion
+www.michaelhasey.com/controlling_gans
 ```
+
+## Lots of Variation but Little Control
+
+The left animation below illustrates how GANS, when left uncontrolled, can generate numerous variations of imagery.  However, in this state, composition, geometry, environment, etc. are left to chance.  The image to the right illustrates how GAN image generation can be controlled when engaging with latent space.  Here, the height of the left tower is being targeted and carefully controlled.
+
+![](images/no_control2.gif)
+![](images/left_tower2.gif)
 
 ## Table of Contents
 
@@ -31,7 +35,13 @@ https://www.michaelhasey.com/gradient-domain-fusion
 
 ## Dataset
 
-The dataset used includes a series of source and target image pairs in jpg format.  The source image represents the image that will be cut out, pasted and blended into the target image. 
+A custom 250 image dataset was used to train all models in this experiment.  The dataset includes images of the Wangjin Soho building in China designed by Zaha Hadid Architects.  This particular building was chosen for its strong geometric gestures, recognizable style, and strong online presence in regards to image volume.  
+
+![](images/data.png)
+
+The images within the database were collected using Archi_Base; an online tool I developed for the autonomous construction of large architectural image-based datasets.  In regards to its operation, Archi_Base first collects user-specified images from online public databases, sorts them with an image-classifier algorithm, and then labels them according to class.  This resulted in a large and sorted image database ready for DNN application.
+
+A custom image augmentation tool was then used to apply various flipping, warping and environmental lighting changes to the images in order to increase the overall dataset size and improve training.
 
 An example image pair has been included and can be found here: 
 
