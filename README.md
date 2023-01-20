@@ -1,13 +1,12 @@
 # Controlling Image Synthesis
 
-![](images/splash.png)
-
 ## About 
 
 There are many examples of image synthesis applications in art, design, and architecture.  Algorithms like GANs have allowed designers to automatically generate new imagery, from Renaissance paintings, furniture designs, or photographs of particular architectural styles.   However, the overwhelming majority of these projects fail to provide any level of synthesis control, thus reinforcing the stigma of algorithms being untamed and unknown black-box entities.
 
 This project aims to shed light on some of these algorithms and reveal how image generation can be controlled through direct interaction with latent vector space.  Here, various models such as VanillaGAN, CycleGAN, and StyleGAN2 are used to explore different control techniques. For training and testing data, a small custom dataset of 250 architectural images was used.
 
+![](images/splash.png)
 
 ## Project Page
 
@@ -17,7 +16,7 @@ An expanded description of this model implimentation can be found on its project
 www.michaelhasey.com/controlling_gans
 ```
 
-## Lots of Variation but Little Control
+## Uncontrollable to Controlled
 
 The left animation below illustrates how GANS, when left uncontrolled, can generate numerous variations of imagery.  However, in this state, composition, geometry, environment, etc. are left to chance.  The image to the right illustrates how GAN image generation can be controlled when engaging with latent space.  Here, the height of the left tower is being targeted and carefully controlled.
 
