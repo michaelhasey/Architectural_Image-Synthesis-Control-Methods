@@ -68,13 +68,17 @@ Above are six pairs of images.  Within each pair, there is a pre-existing real "
 #### Command Line Arguments
 
 ```
-<--use_cycle_consistency_loss>:   To incorporate cycle consistency loss which \
-greatly improves results
-<num_epochs>:   integer specifying the number of times backpropogation loops through \
-all of the training data
+<--use_cycle_consistency_loss>:   To incorporate cycle consistency loss which greatly improves results
+<train_iters>:   The number of training iterations to run
+
+<--X>:  Select the location of images for domain X 
+<--Y>:  Select the location of images for domain Y
+
+* see additional arguements in models/cycle_gan.py
 ```
 
-#### Implimentation example
+#### Running the model
+An example implementation of the model to generate new "target" images in the style of the training dataset that matches the composition of a "source" image.
 
 ```
 $ python cycle_gan.py --use_cycle_consistency_loss
