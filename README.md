@@ -45,7 +45,7 @@ A custom 220 image dataset was used to train all models in this experiment.  The
 
 <br>
 
-The images within the database were collected using Archi_Base; an online tool I developed for the autonomous construction of large architectural image-based datasets.  In regards to its operation, Archi_Base first collects user-specified images from online public databases, sorts them with an image-classifier algorithm, and then labels them according to class.  This resulted in a large and sorted image database ready for DNN application.
+The images within the database were collected using [Archi_Base](https://github.com/michaelhasey/Archi_Base); an online tool I developed for the autonomous construction of large architectural image-based datasets.  In regards to its operation, Archi_Base first collects user-specified images from online public databases, sorts them with an image-classifier algorithm, and then labels them according to class.  This resulted in a large and sorted image database ready for DNN application.
 
 A custom image augmentation tool was then used to apply various flipping, warping and environmental lighting changes to the images in order to increase the overall dataset size and improve training.
 
