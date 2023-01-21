@@ -1,4 +1,4 @@
-# Controlling Image Synthesis
+# Image Synthesis Control Methods
 
 ## About 
 
@@ -53,86 +53,57 @@ The training dataset of building images can be found here:
 data/
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Approach
 
-### Step 1: Choose a Source & Target Image
+### Method 1: Image-to-Image Translation
+#### Model: CycleGAN
 
-To begin, users must select a source image and a target image.  The source image will be the one in which content is copied from, and the target image is the one in which that content will be “pasted” into.  As the algorithm does not modify perspective, images with similar vantage points and perspectives work best.  Finally, similar matching backgrounds between the source and target image, for example the savannah grasslands shown here, helps to ensure a cohesive final image.
+At its core, CycleGAN provides a technique to translate one image into the general style of another.  For example, it can transform an image of a horse galloping in a field into an image of a zebra galloping in a field.  Though the background and pose of the horse remains the same, the horse itself has transformed into a zebra.  This translation method gives us a great deal of control over the synthesis of new images.  Not only can we create new content, but we can control its overall shape or pose, and background as well by matching it to a pre-existing image. 
 
-![](images/image_pair.png)
+![](images/poses.png)
 
-### Step 2: Mask Content to Blend
+Above are six pairs of images.  Within each pair, there is a pre-existing real "source" image on the left (of the Heydar Aliyev Center building), and the new, generated "target" image on the right created by the AI model (in the style of the Wangjin Soho Building).  The "source" image provides the compositional constraints that the generated "target" image must match.  For instance, if the "source" image shows a tall building form in the middle of the image, the AI model must also generate a "target" image of a tall building in the middle, though in the "style" of the training data, which in this case, includes 220 images of the Wangjin Soho building design by Zaha Hadid.  In this way we can directly control the final composition of the generated "target" image.
 
-A masking algorithm is used to define the source and target regions to blend. A graphic user interface allows the user to first select the content in the source image to copy, then change its size and orientation, and finally define where it will be pasted into the target image.  The resultant output is a newly defined source image with the source image content moved to the corresponding x-y orientation that matches its position in the target image as defined by the user, as well as a mask image which highlights the source image pixel area to be copied.
+#### Implementation
 
-![](images/select_cut.png)
+##### Command Line Arguments
 
-### Step 3: Split Source & Target Images into Seperate RGB Channels
-
-In order to move forward, both the  target and source image must be split into their three individual RGB channel components (red, green, blue).  This will allow us to colour match each individual source channel to its corresponding target channel.  For example, colour matching the source image red channel to the target image red channel.  A false color filter has been added to the images below to better illustrate the specific RGB channel associated to each image. 
-
-![](images/channels.png)
-
-### Step 4: Compute the Source Image X & Y Gradients
-
-An image can be described as a series of x-y gradients, or relationships between each one of its individual pixels and their surrounding pixel neighbours in the x and y direction.  As each image pixel can be represented by a number, its relationship to its neighbour can be described by the difference between their pixel values. For example, the gradient between a red pixel with value of 10 and a neighbouring blue pixel with a value of 4 is 6, or 10 - 4 = 6.  This difference is called the derivative. By calculating and recording the derivatives of each pixel within the entire image, we can thus calculate the overall gradient of an image.  With an RGB colour image, we first need to separate the image into its 3 channels before calculating the gradient.  In the next step, we compare this gradient to the target or background image gradient in which it is being copied into and adjust each pixel in order for it to blend in colour and intensity.
-
-![](images/neagtive.png)
-
-### Step 5: Store the X & Y Gradients in Two Matrices
-
-Two matrices must be created in order to store numerical image gradients as well as their corresponding x,y positions within the image.  This is also done so the original image can be recovered or rebuilt from this information.  The first matrix is a sparse matrix where each line represents an individual pixel and its relationship to a single one of its 4 neighbours.  Thus, the number of rows is equal to 4X the number of pixels in the source image being copied.  The number of columns is equal to the number of pixels in the source image being copied.  The second matrix is a 1 dimensional array that represents the known derivative or difference between a single pixel and one of its four neighbours.  Hence the number of elements in this1d array is equal to 4X the number of source image pixels being copied. We can combine these two matrices together with a linear solver in order to recover the original image.
-
-![](images/matrix.png)
-
-### Step 6: Blend Source Image into Target Image Using the Poisson Blending Technique
-
-The previous step described how we can determine an images gradient, encode them into matrices, then convert them back into an image using a linear solver.  In this next step, we take a similar approach but integrate the target image’s gradient as well in order to achieve the blend effect.
-
-In order to do this, we use the Poisson Blending technique which is shown below.  To summarize, the Poisson Blending technique reconstructs the source image gradient in a way that alters its pixel values while maintaining its overall gradient “shape”.  Shape in this instance means the overall gradient pattern as illustrated in Step 4 above.  By maintaining shape, the source image content, such as geometry and pattern, are maintained rather than distorted. 
- 
- ![](images/poisson.png)
- 
-However, the Poisson Blending technique takes into account the colour of the target pixels that surrounding the source image and adjusts the source image pixels to match while maintaining content.  Such pixel level modification is achieved by solving a “least squares” problem which aims to minimizes source image content distortion as much as possible while maximizing the colour cohesion between the source image pixels and neighbouring target image pixels. The power of this technique lies in its ability to modify pixels at an individual rather than universal level, thus leading to seamlessly blended images.
-
-![](images/blend.png)
-
-## Implementation
-
-To run the code and blend a target and source image together, follow these steps.
-
-1.Launch "masking_code.py" from terminal to create required images / mask needed for step 2.
 ```
-masking_code.py
+<--use_cycle_consistency_loss>:   To incorporate cycle consistency loss which \
+greatly improves results
+<num_epochs>:   integer specifying the number of times backpropogation loops through \
+all of the training data
 ```
-    - specify source region to copy
-    - specify target region to paste into
-    - new target mask image created & saved in home directory
-    - new source image created & saved in home directory
 
-2. Run "Part_1.2_Poisson_Blending.ipynb" Jupyter Notebook with output being the final blended image.
+##### Below is an implimentation example to run CycleGAN to generate novel images in the style of the Wangjin Soho building but matching the pose of a given "pose" image
+
 ```
-Part_1.2_Poisson_Blending.ipynb
+$ python cycle_gan.py --use_cycle_consistency_loss
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Performance
 
