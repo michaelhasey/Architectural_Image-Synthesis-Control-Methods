@@ -12,16 +12,7 @@ This project aims to explore various methods to target and control various eleme
 
 An expanded description of this model implimentation can be found on its project page here:
 
-```
-www.michaelhasey.com/controlling_gans
-```
-
-## Uncontrolled vs. Controlled
-
-The left animation below illustrates how GANS, when left uncontrolled, can generate a wide range of imagery in a seemingly random manner.  In this state, composition, geometry, environment, etc. are left to chance.  The image to the right illustrates how GANs can be controlled when properly engaging with latent space.  Here, the height of the left tower is being targeted and altered by carefully manipulating particular latent space vectors.
-
-![](images/no_control3.gif)
-![](images/left_tower2.gif)
+[www.michaelhasey.com/controlling_gans](https://www.michaelhasey.com/controlling_gans)
 
 ## Table of Contents
 
@@ -31,6 +22,17 @@ The left animation below illustrates how GANS, when left uncontrolled, can gener
 - [Performance](#Performance)
 - [References](#References)
 - [Citation](#Citation)
+
+<br>
+
+## Uncontrolled vs. Controlled
+
+The left animation below illustrates how GANS, when left uncontrolled, can generate a wide range of imagery in a seemingly random manner.  In this state, composition, geometry, environment, etc. are left to chance.  The image to the right illustrates how GANs can be controlled when properly engaging with latent space.  Here, the height of the left tower is being targeted and altered by carefully manipulating particular latent space vectors.
+
+![](images/no_control3.gif)
+![](images/left_tower2.gif)
+
+<br>
 
 ## Dataset
 
@@ -53,13 +55,19 @@ The training dataset of building images can be found here:
 data/
 ```
 
+<br>
+
 ## Method 1
 
 ### Image-to-Image Translation using CycleGAN
 
 At its core, CycleGAN provides a technique to translate one image into the general style of another.  For example, it can transform an image of a horse galloping in a field into an image of a zebra galloping in a field.  Though the background and pose of the horse remains the same, the horse itself has transformed into a zebra.  This translation method gives us a great deal of control over the synthesis of new images.  Not only can we create new content, but we can control its overall shape or pose, and background as well by matching it to a pre-existing image. 
 
+<br>
+
 ![](images/poses.png)
+
+<br>
 
 Above are six pairs of images.  Within each pair, there is a pre-existing real "source" image on the left (of the Heydar Aliyev Center building), and the new, generated "target" image on the right created by the AI model (in the style of the Wangjin Soho Building).  The "source" image provides the compositional constraints that the generated "target" image must match.  For instance, if the "source" image shows a tall building form in the middle of the image, the AI model must also generate a "target" image of a tall building in the middle, though in the "style" of the training data, which in this case, includes 220 images of the Wangjin Soho building design by Zaha Hadid.  In this way we can directly control the final composition of the generated "target" image.
 
@@ -83,6 +91,8 @@ An example implementation of the model to generate new "target" images in the st
 ```
 $ python cycle_gan.py --use_cycle_consistency_loss
 ```
+
+<br>
 
 ## Method 2
 
@@ -128,6 +138,8 @@ StyleGAN 2
 $ python generate.py #to use noise loop & feature extraction functions
 ```
 
+<br>
+
 ## Method 3
 
 ### Latent Space Interpolation using StyleGAN
@@ -153,6 +165,8 @@ StyleGAN not only allows us to locate an images position within latent space, bu
 ```
 $ python main.py
 ```
+
+<br>
 
 ## Method 4
 
@@ -182,6 +196,8 @@ to help increase synthesis quality.
 ```
 $ python generate.py #to use noise loop & feature extraction functions
 ```
+
+<br>
 
 ## References
 
