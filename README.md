@@ -53,10 +53,9 @@ The training dataset of building images can be found here:
 data/
 ```
 
-## Approach
+## Method 1
 
-### Method 1: Image-to-Image Translation
-#### Model: CycleGAN
+### Image-to-Image Translation using CycleGAN
 
 At its core, CycleGAN provides a technique to translate one image into the general style of another.  For example, it can transform an image of a horse galloping in a field into an image of a zebra galloping in a field.  Though the background and pose of the horse remains the same, the horse itself has transformed into a zebra.  This translation method gives us a great deal of control over the synthesis of new images.  Not only can we create new content, but we can control its overall shape or pose, and background as well by matching it to a pre-existing image. 
 
@@ -64,9 +63,9 @@ At its core, CycleGAN provides a technique to translate one image into the gener
 
 Above are six pairs of images.  Within each pair, there is a pre-existing real "source" image on the left (of the Heydar Aliyev Center building), and the new, generated "target" image on the right created by the AI model (in the style of the Wangjin Soho Building).  The "source" image provides the compositional constraints that the generated "target" image must match.  For instance, if the "source" image shows a tall building form in the middle of the image, the AI model must also generate a "target" image of a tall building in the middle, though in the "style" of the training data, which in this case, includes 220 images of the Wangjin Soho building design by Zaha Hadid.  In this way we can directly control the final composition of the generated "target" image.
 
-#### Implementation
+### Implementation
 
-##### Command Line Arguments
+#### Command Line Arguments
 
 ```
 <--use_cycle_consistency_loss>:   To incorporate cycle consistency loss which \
@@ -75,7 +74,7 @@ greatly improves results
 all of the training data
 ```
 
-##### Below is an implimentation example to run CycleGAN to generate novel images in the style of the Wangjin Soho building but matching the pose of a given "pose" image
+#### Below is an implimentation example to run CycleGAN to generate novel images in the style of the Wangjin Soho building but matching the pose of a given "pose" image
 
 ```
 $ python cycle_gan.py --use_cycle_consistency_loss
