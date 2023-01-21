@@ -140,7 +140,7 @@ $ python vanilla_gan.py --num_epochs=100 --data_aug=basic/deluxe
 
 StyleGAN 2
 ```
-$ cd StyleGAN_2
+$ cd styleGAN_2
 $ python generate.py #to use noise loop & feature extraction functions
 ```
 
@@ -209,7 +209,7 @@ to help increase synthesis quality.
 #### Running the model
 
 ```
-$ cd StyleGAN_2
+$ cd styleGAN_2
 $ python generate.py #to use noise loop & feature extraction functions
 ```
 
