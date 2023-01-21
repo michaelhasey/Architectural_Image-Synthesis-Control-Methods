@@ -102,6 +102,8 @@ One of the key aspects of GAN control includes accessing and manipulating latent
 
 In addition to converting images into data points, we can also reverse this process and use corresponding latent space data points to reconstruct original images.  The below diagram represents two steps.  First, pixel-based data points are extracted from an image and mapped into latent space.  Then, those data points are used to reconstruct an image that looks similar to the original.  It is this “reconstructed” image that is in fact a new “synthesized” image that is not the original, but is very similar. Beyond image reconstruction, we can also mix or blend data points together that may have originated from different images.  The result of this would be an image that cohesively blends a number of previously disparate features into a single image.
 
+<br>
+
 ![](images/latent_positions.png)
 
 ### Implementation
@@ -146,9 +148,13 @@ $ python generate.py #to use noise loop & feature extraction functions
 
 GANs encode images as a collection of vectors within a complex multi-dimensional latent vector space.  Though difficult to imagine, various points or areas within this latent space relate to particular features within images.  For example, the patterns that define the outline of a building are located in one area of latent space, while the rules that control window grids exist in another.  Beyond parts and pieces, similar images tend to cluster together in latent space, for example, images of tall skyscrapers in one area and images of 2 storey houses in another. 
 
-![](images/latent_interpolate.png)
+<br>
+
+![](images/latent_interpolate2.png)
 
 StyleGAN not only allows us to locate an images position within latent space, but also allows traverse between 2 or more images and explore areas in between.   So for example, we might explore images of buildings that contain both elements of skyscraper and 2-storey residential buildings.  Such direct control over latent space positioning allows us to control how and what we synthesize in novel imagery.
+
+<br>
 
 ![](images/Interpolation.gif)
 
@@ -174,8 +180,12 @@ $ python main.py
 
 In addition to image reconstruction and interpolation between images, latent space provides us with the means to control finer image details such as content shape, positioning, colour, texture, etc.  This is done by using StyleGAN2’s feature extraction abilities, which searches for and targets areas of latent space that control these finer image features.  When applied to the Wangjin Soho dataset, we can use this tool to control things like building height, width, angle, and texture through targeted latent space manipulation.
 
+<br>
+
 ![](images/left_tower2.gif)
 ![](images/right_tower2.gif)
+
+<br>
 
 As shown in the left animation above, the StyleGAN2 feature extraction tool was able to pinpoint the latent vector space that controls the height of the left tower.  In the animation on the right, it pinpointed the latent vector that controls the height of the right tower.  By manipulating these two vectors, both the left and right tower heights can be altered independently.  In this way, specific parts of a generated image can be specifically targeted and modified without drastically effecting the rest of the image.
 
