@@ -74,7 +74,7 @@ greatly improves results
 all of the training data
 ```
 
-#### Below is an implimentation example to run CycleGAN to generate novel images in the style of the Wangjin Soho building but matching the pose of a given "pose" image
+#### Implimentation example
 
 ```
 $ python cycle_gan.py --use_cycle_consistency_loss
