@@ -2,9 +2,9 @@
 
 ## About 
 
-There are many examples of image synthesis applications in art, design, and architecture.  Algorithms like GANs have allowed designers to automatically generate new imagery, from Renaissance paintings, furniture designs, or photographs of particular architectural styles.   However, the overwhelming majority of these projects fail to provide any level of synthesis control, thus reinforcing the stigma of algorithms being untamed and unknown black-box entities.
+There are many examples of image synthesis applications being used to generate images of art, design objects, and architecture. However, the overwhelming majority of these projects do not provide accurate methods of controlling or modifying what is being created.  For instance, if you want to change only a persons hairstyle rather than their entire face within a generated portrait image.
 
-This project aims to shed light on some of these algorithms and reveal how image generation of Zaha-hadid style buildings can be controlled through direct interaction with latent vector space.  Here, various models such as VanillaGAN, CycleGAN, and StyleGAN2 are used to explore different control techniques. For training and testing data, a small custom dataset of 220 images of zaha hadid designed office buildings was used.
+This project aims to explore various methods to target and control various elements within generated images through direct interaction with latent vector space.  In particular, how images generated in the style of Zaha hadid buildings can be carefully modified by a designer.  Here, various models such as VanillaGAN, CycleGAN, and StyleGAN2 are used to explore different control techniques. For training and testing data, a small custom dataset of 220 images of zaha hadid designed office buildings was used.
 
 ![](images/splash.png)
 
