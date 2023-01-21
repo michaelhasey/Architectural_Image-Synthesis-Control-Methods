@@ -18,8 +18,10 @@ An expanded description of this model implimentation can be found on its project
 
 - [Dataset](#Dataset)
 - [Approach](#Approach)
-- [Implementation](#Implementation)
-- [Performance](#Performance)
+- [Method-1](#Method-1)
+- [Method-2](#Method-2)
+- [Method-3](#Method-3)
+- [Method-4](#Method-4)
 - [References](#References)
 - [Citation](#Citation)
 
