@@ -90,6 +90,7 @@ Above are six pairs of images.  Within each pair, there is a pre-existing real "
 An example implementation of the model to generate new "target" images in the style of the training dataset that matches the composition of a "source" image.
 
 ```
+$ cd CycleGAN
 $ python cycle_gan.py --use_cycle_consistency_loss
 ```
 
@@ -133,11 +134,13 @@ to help increase synthesis quality.
 
 DCGAN
 ```
+$ cd DCGAN
 $ python vanilla_gan.py --num_epochs=100 --data_aug=basic/deluxe
 ```
 
 StyleGAN 2
 ```
+$ cd StyleGAN_2
 $ python generate.py #to use noise loop & feature extraction functions
 ```
 
@@ -170,6 +173,7 @@ StyleGAN not only allows us to locate an images position within latent space, bu
 #### Running the model
 
 ```
+$ cd StyleGAN
 $ python main.py
 ```
 
@@ -205,6 +209,7 @@ to help increase synthesis quality.
 #### Running the model
 
 ```
+$ cd StyleGAN_2
 $ python generate.py #to use noise loop & feature extraction functions
 ```
 
