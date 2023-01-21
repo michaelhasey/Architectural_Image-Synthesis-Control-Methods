@@ -17,7 +17,6 @@ An expanded description of this model implimentation can be found on its project
 ## Table of Contents
 
 - [Dataset](#Dataset)
-- [Approach](#Approach)
 - [Method-1](#Method-1)
 - [Method-2](#Method-2)
 - [Method-3](#Method-3)
