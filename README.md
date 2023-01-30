@@ -1,4 +1,4 @@
-# Image Synthesis Control Methods
+# Architectural Image Synthesis Control Methods
 
 ## About 
 
